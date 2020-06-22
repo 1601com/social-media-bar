@@ -1,0 +1,77 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php
+$smShareLinks = [
+        'facebook' => 'https://www.facebook.com/sharer.php?u={{env::url}}/{{env::request}}[&]t={{page::pageTitle}}',
+        'twitter' => 'http://twitter.com/intent/tweet?status={{page::pageTitle|rawurlencode}}+{{env::url}}/{{env::request}}'
+]
+?>
+
+    <div id="smWrapper">
+        <ul>
+            <?php foreach (array_keys($this->smElements) as $key=>$element): ?>
+                <li class="sm_<?= $this->smElements[$element]["smType"] ?>">
+                    <div class="smIcon">
+                        <?php if ($this->smElements[$element]["smIcon"] == true): ?>
+                            <img src="<?= $this->smElements[$element]["smIcon"] ?>">
+                        <?php else: ?>
+                            <img src="/files/layout/img/smBarIcons/<?= $this->smElements[$element]["smType"] ?>.svg">
+                        <?php endif; ?>
+                    </div>
+                    <div class="smLinks">
+                        <a href="<?= $this->smElements[$element]["smURL"] ?>" <?php if($this->smElements[$element]["smTarget"] == true) echo 'target="_blank" '; ?>>
+                            <span>Besuchen Sie uns auf <?= $this->smElements[$element]["smType"] ?></span>
+                        </a>
+                        <?php if ($this->smElements[$element]["smShare"] == true): ?>
+                            <a class="share sharePopup" href="<?= $smShareLinks[$this->smElements[$element]["smType"]] ?>" <?php if($this->smElements[$element]["smTarget"] == true) echo 'target="_blank" '; ?>>
+                                <?php if ($this->smElements[$element]["smShareIcon"] == true): ?>
+                                    <img src="/files/layout/img/smBarIcons/share.svg">
+                                <?php else: ?>
+                                    <span>Webseite teilen</span>
+                                <?php endif; ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+        <?php $this->showTemplateVars() ?>
+    </div>
+
+<script>
+    (function () {
+        // Facebook und Twitter Popup
+        var popUpElem = document.querySelectorAll('.sharePopup');
+
+        for (var i = 0; i < popUpElem.length; i++) {
+            popUpElem[i].onclick = function(event) {
+                if (popUpElem[i].classList === "share") {
+                    var width = 550;
+                    var height = 450;
+                } else if (popUpElem[i].classList === "sm_facebook") {
+                    var width = 600;
+                    var height = 700;
+                }
+                var left = (window.innerWidth - width) / 2,
+                    top = (window.innerHeight - height) / 2,
+                    url = popUpElem[i].href,
+                    opts = 'status=1' +
+                        ',width=' + width +
+                        ',height=' + height +
+                        ',top=' + top +
+                        ',left=' + left;
+
+                window.open(url, 'share_popup', opts);
+                //if (mypopup) mypopup.focus();
+            }
+
+            console.log(popUpElem[i].href);
+        }
+    })();
+</script>
+
+<?php $this->endblock(); ?>
+
+
