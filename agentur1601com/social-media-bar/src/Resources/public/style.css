@@ -1,0 +1,39 @@
+#smWrapper {
+    position: fixed;
+    top: 30%;
+    right: 0;
+}
+
+#smWrapper ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 4px;
+}
+#smWrapper ul li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    font-size: .9em;
+}
+#smWrapper ul li .smIcon {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+}
+#smWrapper ul li .smIcon img {
+    max-height: 80%;
+    max-width: 80%;
+}
+#smWrapper ul li .smLinks {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 8px;
+    align-items: center;
+    padding-right: 8px;
+}
+#smWrapper ul li .smLinks a.share {
+    justify-self: center;
+}

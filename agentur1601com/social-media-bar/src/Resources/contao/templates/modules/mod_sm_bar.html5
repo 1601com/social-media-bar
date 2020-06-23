@@ -14,22 +14,22 @@ $smShareLinks = [
             <?php foreach (array_keys($this->smElements) as $key=>$element): ?>
                 <li class="sm_<?= $this->smElements[$element]["smType"] ?>">
                     <div class="smIcon">
-                        <?php if ($this->smElements[$element]["smIcon"] == true): ?>
-                            <img src="<?= $this->smElements[$element]["smIcon"] ?>">
-                        <?php else: ?>
-                            <img src="/files/layout/img/smBarIcons/<?= $this->smElements[$element]["smType"] ?>.svg">
+                        <?php if ($this->smElements[$element]["smCustomIcon"] == true): ?>
+                            <img src="<?= $this->smElements[$element]["smCustomIcon"] ?>">
+                        <?php elseif ($this->iconPath.$this->smElements[$element]["smType"].'.svg' == true): ?>
+                            <img src="<?= $this->iconPath.$this->smElements[$element]["smType"].'.svg' ?>">
                         <?php endif; ?>
                     </div>
                     <div class="smLinks">
                         <a href="<?= $this->smElements[$element]["smURL"] ?>" <?php if($this->smElements[$element]["smTarget"] == true) echo 'target="_blank" '; ?>>
-                            <span>Besuchen Sie uns auf <?= $this->smElements[$element]["smType"] ?></span>
+                            <span>Besuchen Sie uns<br>auf <?= $this->smElements[$element]["smType"] ?></span>
                         </a>
                         <?php if ($this->smElements[$element]["smShare"] == true): ?>
-                            <a class="share sharePopup" href="<?= $smShareLinks[$this->smElements[$element]["smType"]] ?>" <?php if($this->smElements[$element]["smTarget"] == true) echo 'target="_blank" '; ?>>
+                            <a class="share sharePopup" href="<?= $smShareLinks[$this->smElements[$element]["smType"]] ?>" rel="newwindow nofollow external" title="Webseite auf Ihrer Pinnwand posten" target="_blank">
                                 <?php if ($this->smElements[$element]["smShareIcon"] == true): ?>
-                                    <img src="/files/layout/img/smBarIcons/share.svg">
+                                    <img src="<?= $this->shareIcon ?>">
                                 <?php else: ?>
-                                    <span>Webseite teilen</span>
+                                    <span>Webseite<br>teilen</span>
                                 <?php endif; ?>
                             </a>
                         <?php endif; ?>
@@ -37,7 +37,6 @@ $smShareLinks = [
                 </li>
             <?php endforeach; ?>
         </ul>
-        <?php $this->showTemplateVars() ?>
     </div>
 
 <script>
@@ -47,16 +46,18 @@ $smShareLinks = [
 
         for (var i = 0; i < popUpElem.length; i++) {
             popUpElem[i].onclick = function(event) {
-                if (popUpElem[i].classList === "share") {
-                    var width = 550;
-                    var height = 450;
-                } else if (popUpElem[i].classList === "sm_facebook") {
-                    var width = 600;
-                    var height = 700;
+                var width,
+                    height;
+                if (this.classList.contains("share")) {
+                    width = 550;
+                    height = 450;
+                } else if (this.classList.contains("sm_facebook")) {
+                    width = 600;
+                    height = 700;
                 }
                 var left = (window.innerWidth - width) / 2,
                     top = (window.innerHeight - height) / 2,
-                    url = popUpElem[i].href,
+                    url = this.href,
                     opts = 'status=1' +
                         ',width=' + width +
                         ',height=' + height +
@@ -66,8 +67,6 @@ $smShareLinks = [
                 window.open(url, 'share_popup', opts);
                 //if (mypopup) mypopup.focus();
             }
-
-            console.log(popUpElem[i].href);
         }
     })();
 </script>

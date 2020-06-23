@@ -114,9 +114,8 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = array
             'label'                   => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['smType'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options'                 => ['facebook', 'twitter', 'instagram', 'youtube', 'Sonstige'],
+            'options'                 => ['facebook', 'twitter', 'instagram', 'youtube', 'linkedin', 'xing', 'pinterest', 'googlemaps', 'Sonstige'],
             //'foreignKey'              => 'tl_user.name',
-            //'options_callback'        => ['CLASS', 'METHOD'],
             'eval'                    => ['submitOnChange'=>true, 'mandatory'=>true, 'includeBlankOption'=>true, 'tl_class'=>'w50'],
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
@@ -126,6 +125,7 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = array
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => ['mandatory'=>true, 'rgxp'=>'url', 'decodeEntities'=>true, 'maxlength'=>255, 'tl_class'=>'w50 wizard'],
+            //'wizard'                  => [['tl_content', 'pagePicker']],
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         /*'cssClass' => array

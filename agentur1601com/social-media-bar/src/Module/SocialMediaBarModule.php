@@ -53,7 +53,7 @@ class SocialMediaBarModule extends \Module
                     "smType" => $result->smtypeselect,
                     "smURL" => $result->smurl,
                     "smTarget" => $result->smtarget,
-                    "smIcon" => $this->addSmImage($result, $result->smcustomicon),
+                    "smCustomIcon" => $this->addSmImage($result, $result->smcustomicon),
                     "smShare" => $result->smshare,
                     "smShareIcon" => $result->smshareicon
                 ];
@@ -61,6 +61,10 @@ class SocialMediaBarModule extends \Module
         }
 
         $this->Template->smElements = $elemSM;
+        $this->Template->iconPath = 'bundles/socialmediabar/smBarIcons/';
+        $this->Template->shareIcon = 'bundles/socialmediabar/smBarIcons/share.svg';
+
+        $GLOBALS['TL_CSS'][] = 'bundles/socialmediabar/style.css';
     }
 
 
