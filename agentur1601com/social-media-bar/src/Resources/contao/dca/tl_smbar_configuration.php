@@ -76,7 +76,7 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = array
     'palettes' => array
     (
         '__selector__' => ['smtypeselect'],
-        'default'                     => '{title_legend},smtypeselect,smurl,smtarget,smcustomicon'
+        'default'                     => '{title_legend},smtypeselect,smurl,smtarget;{icon_legend:hide},smcustomicon;'
     ),
     'subpalettes' => [
         'smtypeselect_Sonstige' => 'mscsmtype',
@@ -102,13 +102,6 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = array
         (
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
-        /*'title' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['title'],
-            'inputType'               => 'text',
-            'search'                  => true,
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>64, 'tl_class'=>'w50')
-        ),*/
         'smtypeselect' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['smType'],
@@ -128,14 +121,6 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = array
             //'wizard'                  => [['tl_content', 'pagePicker']],
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        /*'cssClass' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['cssClass'],
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        )*/
         'mscsmtype' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['mscsmtype'],
@@ -164,7 +149,7 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = array
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'default'                 => 1,
-            'eval'                    => ['tl_class' => 'w50'],
+            'eval'                    => ['tl_class'=>'w50'],
             'sql'                     => "char(1) NOT NULL default ''"
         ],
         'smshareicon' => [

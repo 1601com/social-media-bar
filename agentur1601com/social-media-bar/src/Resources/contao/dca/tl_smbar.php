@@ -84,7 +84,7 @@ $GLOBALS['TL_DCA']['tl_smbar'] = array
     // Palettes
     'palettes' => array
     (
-        'default'                     => '{social media bar},title,visibility;{expert_legend:hide},cssID'
+        'default'                     => 'title'
     ),
 
     // Fields
@@ -105,13 +105,6 @@ $GLOBALS['TL_DCA']['tl_smbar'] = array
             'search'                  => true,
             'eval'                    => array('mandatory'=>true, 'maxlength'=>64),
             'sql'                     => "varchar(255) NOT NULL default ''"
-        ),
-        'visibility' => [
-            'label'                   => &$GLOBALS['TL_LANG']['tl_smbar']['visibility'],
-            'exclude'                 => true,
-            'inputType'               => 'pageTree',
-            'eval'                    => ['fieldType'=>'checkbox', 'tl_class'=>'clr', 'multiple'=>true],
-            'sql'                     => "varchar(255) NOT NULL default ''"
-        ]
+        )
     )
 );
