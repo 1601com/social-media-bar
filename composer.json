@@ -2,17 +2,20 @@
     "name": "agentur1601com/social-media-bar",
     "type": "contao-bundle",
     "description": "Social-Media-Bar Erweiterung für Contao4",
-    "license": "LGPL-3.0-or-later",
+    "license": "MIT",
     "authors": [
         {
+            "name": "Valentin Mayer",
+            "homepage": "https://github.com/vm1601com"
+        },
+        {
             "name": "agentur1601com",
-            "homepage": "https://github.com/1601com/Social-Media-Bar"
+            "homepage": "https://www.1601.com"
         }
     ],
     "require": {
         "php": "^5.6 || ^7.0",
-        "contao/core-bundle": "4.4.*",
-        "symfony/framework-bundle": "^3.3"
+        "contao/core-bundle": "4.*"
     },
     "conflict": {
         "contao/core": "*",
