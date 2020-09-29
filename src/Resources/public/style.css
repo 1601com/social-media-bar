@@ -1,0 +1,147 @@
+#smWrapper {
+    z-index: 999;
+}
+#smWrapper ul {
+    position: fixed;
+    top: 30%;
+    right: -220px;
+    width: 260px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2px;
+}
+#smWrapper ul li {
+    position: relative;
+    left: 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+    font-size: .8em;
+    border-radius: 30px;
+    transition: all .3s ease, left .5s ease;
+}#smWrapper ul li:hover {
+    left: -190px;
+}
+#smWrapper .sm_facebook:hover {
+    background: #4267B2;
+}
+#smWrapper .sm_twitter:hover {
+    background: #1DA1F2;
+}
+#smWrapper .sm_instagram:hover {
+    background: #C13584;
+}
+#smWrapper .sm_youtube:hover {
+    background: #ff0000;
+}
+#smWrapper .sm_linkedin:hover {
+    background: #2867B2;
+}
+#smWrapper .sm_xing:hover {
+    background: #126567;
+}
+#smWrapper .sm_pinterest:hover {
+    background: #BD081C;
+}
+#smWrapper .sm_googlemaps:hover {
+    background: #4285F4;
+}
+
+#smWrapper ul li .smIcon, #smWrapper ul li .contactIcon {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    height: 36px;
+    width: 36px;
+    border-radius: 30px;
+    transition: all .3s ease;
+}
+#smWrapper ul li:hover .smIcon {
+    /*box-shadow: 0 0 10px 2px rgba(0,0,0,0.2);*/
+    border-radius: 0;
+}
+#smWrapper ul li .smIcon img {
+    max-height: 70%;
+    max-width: 70%;
+}
+#smWrapper ul li.sm_pinterest .smIcon img {
+    max-height: 60%;
+    max-width: 60%;
+}
+#smWrapper ul li.sm_xing .smIcon img,
+#smWrapper ul li.sm_instagram .smIcon img,
+#smWrapper ul li.sm_googlemaps .smIcon img,
+#smWrapper ul li.contactPerson .contactIcon img {
+    max-height: 56%;
+    max-width: 56%;
+}
+#smWrapper ul li.sm_linkedin .smIcon img {
+    max-height: 48%;
+    max-width: 48%;
+}
+#smWrapper ul li .smLinks {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding-right: 2em;
+}
+#smWrapper ul li .smLinks a {
+    color: #fff;
+    padding: 0 .5em;
+    text-align: center;
+}
+
+#smWrapper .contactPerson {
+    overflow: visible;
+}
+#smWrapper .contactPerson:hover {
+    left: -240px;
+}
+#smWrapper .contactPerson:hover .contactIcon {
+    background: #293133;
+}
+#smWrapper .outerContactWrapper {
+    position: absolute;
+    left: 40px;
+    width: 240px;
+    transition: all .5s ease;
+}
+#smWrapper .outerContactWrapper .innerContactWrapper {
+    background: #293133;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    padding: 1em 1.2em;
+    box-sizing: border-box;
+}
+#smWrapper .outerContactWrapper .innerContactWrapper h3 {
+    margin-bottom: 1em;
+    color: #fff;
+    font-size: 1.4em;
+}
+#smWrapper .outerContactWrapper .innerContactWrapper .contactElement {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto 1fr;
+    color: #fff;
+    padding-bottom: 1em;
+}
+#smWrapper .outerContactWrapper .innerContactWrapper .contactElement:not(:last-child) {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 1em;
+}
+#smWrapper .outerContactWrapper .innerContactWrapper .contactElement .contactImage img {
+    width: 80px;
+    margin-right: 1em;
+}
+#smWrapper .outerContactWrapper .innerContactWrapper .contactElement .contactInfo {
+    display: flex;
+    flex-direction: column;
+}
+#smWrapper .outerContactWrapper .innerContactWrapper .contactElement .contactInfo a {
+    color: #fff;
+    text-decoration: underline;
+}
+#smWrapper .outerContactWrapper .innerContactWrapper .contactElement .contactInfo .name {
+    margin-bottom: 1em;
+}

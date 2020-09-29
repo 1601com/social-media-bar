@@ -1,0 +1,82 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php
+$smShareLinks = [
+    'facebook' => 'https://www.facebook.com/sharer.php?u={{env::url}}/{{env::request}}[&]t={{page::pageTitle}}',
+    'twitter' => 'http://twitter.com/intent/tweet?status={{page::pageTitle|rawurlencode}}+{{env::url}}/{{env::request}}'
+]
+?>
+
+<?php global $objPage ?>
+
+<div id="smWrapper">
+    <ul>
+        <?php foreach (array_keys($this->smElements) as $key => $element): ?>
+            <li class="sm_<?= $this->smElements[$element]["smType"] ?> <?php if ($this->smElements[$element]["smShareIcon"] == true) {
+                echo "shareIconActive";
+            } ?>">
+                <div class="smIcon">
+                    <?php if ($this->smElements[$element]["smCustomIcon"] == true): ?>
+                        <img src="<?= $this->smElements[$element]["smCustomIcon"] ?>" alt="custom social media icon">
+                    <?php elseif ($this->iconPath . $this->smElements[$element]["smType"] . '.svg' == true): ?>
+                        <img src="<?= $this->iconPath . $this->smElements[$element]["smType"] . '.svg' ?>" alt="social media icon">
+                    <?php endif; ?>
+                </div>
+                <div class="smLinks">
+                    <a href="<?= $this->smElements[$element]["smURL"] ?>" <?php if ($this->smElements[$element]["smTarget"] == true) echo 'target="_blank" '; ?>>
+                        <span>Besuchen Sie uns <?php if ($this->smElements[$element]["smShare"] == true) {
+                                echo "<br>";
+                            } ?>auf <?= $this->smElements[$element]["smType"] ?></span>
+                    </a>
+                    <?php if ($this->smElements[$element]["smShare"] == true): ?>
+                        <a class="share sharePopup" href="<?= $smShareLinks[$this->smElements[$element]["smType"]] ?>"
+                           rel="noopener nofollow external" title="Webseite auf Ihrer Pinnwand posten" target="_blank">
+                            <?php if ($this->smElements[$element]["smShareIcon"] == true): ?>
+                                <img src="<?= $this->shareIcon ?>" alt="social media share icon">
+                            <?php else: ?>
+                                <span>Webseite<br>teilen</span>
+                            <?php endif; ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </li>
+        <?php endforeach; ?>
+
+        <?php if ($this->checkContactPerson && in_array(intval($objPage->id), $this->contactPerson[0]["contactpages"], true)): ?>
+            <li class="contactPerson">
+                <div class="contactIcon">
+                    <?php if ($this->contactIcon): ?>
+                        <img src="<?= $this->contactIcon ?>" alt="contact person icon">
+                    <?php endif; ?>
+                </div>
+                <div class="outerContactWrapper">
+                    <div class="innerContactWrapper">
+                        <h3>Kontakt</h3>
+                        <?php foreach (array_keys($this->contactPerson) as $key => $element): ?>
+                            <div class="contactElement">
+                                <div class="contactImage">
+                                    <?php if ($this->contactPerson[$element]["profileImage"]): ?>
+                                        <img src="<?= $this->contactPerson[$element]["profileImage"] ?>" alt="contact person profile image">
+                                    <?php endif; ?>
+                                </div>
+                                <div class="contactInfo">
+                                    <span class="name"><?= $this->contactPerson[$element]["firstname"] ?> <?= $this->contactPerson[$element]["lastname"] ?></span>
+                                    <span class="email"><?= $this->replaceInsertTags("{{email::" . $this->contactPerson[$element]["email"] . "}}"); ?></span>
+                                    <span class="phone"><a title="Kontakt Telefonnummer"
+                                                           href="tel:<?= $this->contactPerson[$element]["phone"] ?>"><?= $this->contactPerson[$element]["phone"] ?></a></span>
+                                    <p class="description"><?= $this->contactPerson[$element]["description"] ?></p>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </li>
+        <?php endif; ?>
+    </ul>
+</div>
+
+<?php $this->endblock(); ?>
+
+
