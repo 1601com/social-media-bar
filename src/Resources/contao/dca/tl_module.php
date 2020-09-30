@@ -1,7 +1,9 @@
 <?php
 
 
-$GLOBALS['TL_DCA']['tl_module']['palettes']['social_media_bar'] = '{title_legend},name,type;{template_legend:hide},sm_bar,sm_template;{expert_legend:hide},cssID';
+
+
+$GLOBALS['TL_DCA']['tl_module']['palettes']['social_media_bar'] = '{title_legend},name,type;{config_legend},sm_bar;{template_legend},sm_template;{expert_legend:hide},cssID';
 
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sm_template'] = [
