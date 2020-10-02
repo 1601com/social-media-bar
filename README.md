@@ -15,12 +15,12 @@ $ composer require agentur1601com/social-media-bar
 ### Konfiguration der Social Media Bar
 
 * Nach der Installation wurde ein neuer Punkt "Social Media" in Contao ergänzt
-* Unter diesem muss zuerst eine neue Social Media Bar angelegt und ausgewählt werden ob ein Ansprechpartner mit ausgegeben werden soll
-* Anschließend kann die Social Media Bar bearbeitet und beliebig viele Social Media Elemente erstellt werden.
-  * Für die Vordefinierten Social Media Anbieter wird standardmäßig ein weißes Icon ausgegeben, welches aber über das custom Icon überschrieben werden kann.
-  * Über den Punkt Sonstige können zu den vordefineirten social media Anbietern weitere hinzugefügt werden.
+* Unter diesem muss zuerst eine neue Social Media Bar angelegt werden (Hier kann außerdem ausgewählt werden ob ein Ansprechpartner ausgegeben werden soll)
+* Anschließend kann die Social Media Bar bearbeitet und es können beliebig viele Social Media Elemente erstellt werden
+  * Für die Vordefinierten Social Media Anbieter wird standardmäßig ein weißes Icon ausgegeben, welches aber über das custom Icon überschrieben werden kann
+  * Über den Punkt Sonstige können zu den vordefineirten social media Anbietern weitere hinzugefügt werden
   * Die Reihenfolge der Elemente kann per Drag&Drop angepasst werden
-* Anscließend muss noch das zugehörige Frontend Modul angelegt und im entsprechenden Seitenlayout hinterlegt werden.
+* Anscließend muss noch das zugehörige Frontend Modul angelegt und im entsprechenden Seitenlayout hinterlegt werden
 
 ### Ansprechpartner ausgeben
 
