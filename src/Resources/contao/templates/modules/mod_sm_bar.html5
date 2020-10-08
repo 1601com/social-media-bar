@@ -44,35 +44,37 @@ $smShareLinks = [
             </li>
         <?php endforeach; ?>
 
-        <?php if ($this->checkContactPerson && in_array(intval($objPage->id), $this->contactPerson[0]["contactpages"], true)): ?>
-            <li class="contactPerson">
-                <div class="contactIcon">
-                    <?php if ($this->contactIcon): ?>
-                        <img src="<?= $this->contactIcon ?>" alt="contact person icon">
-                    <?php endif; ?>
-                </div>
-                <div class="outerContactWrapper">
-                    <div class="innerContactWrapper">
-                        <h3>Kontakt</h3>
-                        <?php foreach (array_keys($this->contactPerson) as $key => $element): ?>
-                            <div class="contactElement">
-                                <div class="contactImage">
-                                    <?php if ($this->contactPerson[$element]["profileImage"]): ?>
-                                        <img src="<?= $this->contactPerson[$element]["profileImage"] ?>" alt="contact person profile image">
-                                    <?php endif; ?>
-                                </div>
-                                <div class="contactInfo">
-                                    <span class="name"><?= $this->contactPerson[$element]["firstname"] ?> <?= $this->contactPerson[$element]["lastname"] ?></span>
-                                    <span class="email"><?= $this->replaceInsertTags("{{email::" . $this->contactPerson[$element]["email"] . "}}"); ?></span>
-                                    <span class="phone"><a title="Kontakt Telefonnummer"
-                                                           href="tel:<?= $this->contactPerson[$element]["phone"] ?>"><?= $this->contactPerson[$element]["phone"] ?></a></span>
-                                    <p class="description"><?= $this->contactPerson[$element]["description"] ?></p>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
+        <?php if(is_array($this->contactPerson[0]["contactpages"])):?>
+            <?php if ($this->checkContactPerson && in_array(intval($objPage->id), $this->contactPerson[0]["contactpages"], true)): ?>
+                <li class="contactPerson">
+                    <div class="contactIcon">
+                        <?php if ($this->contactIcon): ?>
+                            <img src="<?= $this->contactIcon ?>" alt="contact person icon">
+                        <?php endif; ?>
                     </div>
-                </div>
-            </li>
+                    <div class="outerContactWrapper">
+                        <div class="innerContactWrapper">
+                            <h3>Kontakt</h3>
+                            <?php foreach (array_keys($this->contactPerson) as $key => $element): ?>
+                                <div class="contactElement">
+                                    <div class="contactImage">
+                                        <?php if ($this->contactPerson[$element]["profileImage"]): ?>
+                                            <img src="<?= $this->contactPerson[$element]["profileImage"] ?>" alt="contact person profile image">
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="contactInfo">
+                                        <span class="name"><?= $this->contactPerson[$element]["firstname"] ?> <?= $this->contactPerson[$element]["lastname"] ?></span>
+                                        <span class="email"><?= $this->replaceInsertTags("{{email::" . $this->contactPerson[$element]["email"] . "}}"); ?></span>
+                                        <span class="phone"><a title="Kontakt Telefonnummer"
+                                                               href="tel:<?= $this->contactPerson[$element]["phone"] ?>"><?= $this->contactPerson[$element]["phone"] ?></a></span>
+                                        <p class="description"><?= $this->contactPerson[$element]["description"] ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </li>
+            <?php endif; ?>
         <?php endif; ?>
     </ul>
 </div>

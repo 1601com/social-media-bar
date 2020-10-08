@@ -45,7 +45,7 @@ class SocialMediaBarModule extends \Module
 
         // contact Person
         if (!$this->_createContactPerson()) {
-            trigger_error("Contact person can’t be fully loaded!");
+            // return if no Contact Person is selected
             return;
         }
         $this->_createContactPerson();
