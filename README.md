@@ -16,6 +16,7 @@ $ composer require agentur1601com/social-media-bar
 
 * Nach der Installation wurde ein neuer Punkt "Social Media" in Contao ergänzt
 * Unter diesem muss zuerst eine neue Social Media Bar angelegt werden (Hier kann außerdem ausgewählt werden ob ein Ansprechpartner ausgegeben werden soll)
+* Unter Theme Einstellungen kann ein Theme für die Social Media Bar ausgewählt werden (light / dark)
 * Anschließend kann die Social Media Bar bearbeitet und es können beliebig viele Social Media Elemente erstellt werden
   * Für die Vordefinierten Social Media Anbieter wird standardmäßig ein weißes Icon ausgegeben, welches aber über das custom Icon überschrieben werden kann
   * Über den Punkt Sonstige können zu den vordefineirten social media Anbietern weitere hinzugefügt werden
