@@ -36,6 +36,10 @@ class SocialMediaBarModule extends \Module
      */
     protected function compile()
     {
+        // selected Theme
+        $selectedTheme = $this->_getTheme();
+        $this->Template->selectedTheme = $selectedTheme;
+
         // social media elements
         if (!$this->_createSMElement()) {
             trigger_error("Social media elements can’t be fully loaded!");
@@ -52,7 +56,21 @@ class SocialMediaBarModule extends \Module
     }
 
     /**
-     * Creates the sm element
+     * get social media bar theme
+     * @return string
+     */
+    private function _getTheme(): string
+    {
+        $checkThemeSelection = $this->Database->prepare("SELECT themeselect FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
+
+        $smTheme = $checkThemeSelection->themeselect;
+
+        return $smTheme;
+    }
+
+    /**
+     * creates social media element
+     * @return bool
      */
     private function _createSMElement(): bool
     {
@@ -94,7 +112,7 @@ class SocialMediaBarModule extends \Module
 
         $this->Template->smElements = $elemSM;
         $this->Template->iconPath = 'bundles/socialmediabar/smBarIcons/';
-        $this->Template->shareIcon = 'bundles/socialmediabar/smBarIcons/share.svg';
+        $this->Template->shareIcon = 'bundles/socialmediabar/smBarIcons/share_' . $this->_getTheme() . '.svg';
 
         return true;
     }
@@ -138,7 +156,7 @@ class SocialMediaBarModule extends \Module
             $this->Template->contactIcon = $contacticon;
         }
 
-        $this->Template->contactIcon = 'bundles/socialmediabar/smBarIcons/contact.svg';
+        $this->Template->contactIcon = 'bundles/socialmediabar/smBarIcons/contact_' . $this->_getTheme() . '.svg';
     }
 
 

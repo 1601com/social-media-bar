@@ -11,7 +11,7 @@ $smShareLinks = [
 
 <?php global $objPage ?>
 
-<div id="smWrapper">
+<div id="smWrapper" class="<?php if ($this->selectedTheme): ?><?= $this->selectedTheme."Theme" ?><?php endif; ?>">
     <ul>
         <?php foreach (array_keys($this->smElements) as $key => $element): ?>
             <li class="sm_<?= $this->smElements[$element]["smType"] ?> <?php if ($this->smElements[$element]["smShareIcon"] == true) {
@@ -20,8 +20,8 @@ $smShareLinks = [
                 <div class="smIcon">
                     <?php if ($this->smElements[$element]["smCustomIcon"] == true): ?>
                         <img src="<?= $this->smElements[$element]["smCustomIcon"] ?>" alt="custom social media icon">
-                    <?php elseif ($this->iconPath . $this->smElements[$element]["smType"] . '.svg' == true): ?>
-                        <img src="<?= $this->iconPath . $this->smElements[$element]["smType"] . '.svg' ?>" alt="social media icon">
+                    <?php elseif ($this->iconPath . $this->smElements[$element]["smType"] . "_" . $this->selectedTheme . '.svg' == true): ?>
+                        <img src="<?= $this->iconPath . $this->smElements[$element]["smType"] . "_" . $this->selectedTheme . '.svg' ?>" alt="social media icon">
                     <?php endif; ?>
                 </div>
                 <div class="smLinks">

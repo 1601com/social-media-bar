@@ -10,3 +10,7 @@ $GLOBALS['TL_LANG']['tl_smbar']['contactperson'] = ['Ansprechpartner aktivieren'
 $GLOBALS['TL_LANG']['tl_smbar']['contactcustomicon'] = ['Custom Kontakt Icon', 'Hier kann ein custom Icon für das Ansprechpartnerfeld ausgewählt werden.'];
 
 
+$GLOBALS['TL_LANG']['tl_smbar']['theme_legend'] = 'Theme Einstellungen';
+$GLOBALS['TL_LANG']['tl_smbar']['themeselect'] = ['Themeauswahl', 'Hier kann ein Theme für die Social Media Bar ausgewählt werden. Als default Theme wird hier "light" verwendet.'];
+
+

@@ -68,7 +68,7 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
 
     // Palettes
     'palettes' => [
-        'default' => 'title;{contact_legend},contactperson,contactcustomicon'
+        'default' => 'title;{theme_legend:hide},themeselect;{contact_legend},contactperson,contactcustomicon'
     ],
 
     // Fields
@@ -100,6 +100,15 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
             'inputType' => 'fileTree',
             'eval' => ['fieldType' => 'radio', 'files' => true, 'filesOnly' => true, 'tl_class' => 'w50', 'extensions' => 'svg,png'],
             'sql' => "binary(16) NULL"
-        ]
+        ],
+        'themeselect' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_smbar']['themeselect'],
+            'exclude' => true,
+            'inputType' => 'select',
+            'options' => ['light', 'dark'],
+            'default' => 'light',
+            'eval' => ['tl_class' => 'w50'],
+            'sql' => "varchar(255) NOT NULL default ''"
+        ],
     ]
 ];
