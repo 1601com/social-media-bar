@@ -37,22 +37,17 @@ class SocialMediaBarModule extends \Module
     protected function compile()
     {
         // selected Theme
-        $selectedTheme = $this->_getTheme();
-        $this->Template->selectedTheme = $selectedTheme;
+        $this->Template->selectedTheme = $this->_getTheme();
 
         // social media elements
-        if (!$this->_createSMElement()) {
-            trigger_error("Social media elements can’t be fully loaded!");
+        if (!$this->_assignTempVarsSMElement()) {
+            trigger_error("Social media elements can’t be fully loaded!", E_USER_WARNING);
             return;
         }
-        $this->_createSMElement();
+        $this->_assignTempVarsSMElement();
 
-        // contact Person
-        if (!$this->_createContactPerson()) {
-            // return if no Contact Person is selected
-            return;
-        }
-        $this->_createContactPerson();
+        // contact person
+        $this->_assignTempVarsContactPerson();
     }
 
     /**
@@ -63,16 +58,14 @@ class SocialMediaBarModule extends \Module
     {
         $checkThemeSelection = $this->Database->prepare("SELECT themeselect FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
 
-        $smTheme = $checkThemeSelection->themeselect;
-
-        return $smTheme;
+        return $checkThemeSelection->themeselect;
     }
 
     /**
      * creates social media element
      * @return bool
      */
-    private function _createSMElement(): bool
+    private function _assignTempVarsSMElement(): bool
     {
         $elemSM = [];
         $result = $this->Database->prepare("SELECT * FROM tl_smbar_configuration WHERE pid=? ORDER BY sorting ASC")->execute($this->sm_bar);
@@ -112,22 +105,23 @@ class SocialMediaBarModule extends \Module
 
         $this->Template->smElements = $elemSM;
         $this->Template->iconPath = 'bundles/socialmediabar/smBarIcons/';
-        $this->Template->shareIcon = 'bundles/socialmediabar/smBarIcons/share_' . $this->_getTheme() . '.svg';
+        $this->Template->shareIcon = sprintf('bundles/socialmediabar/smBarIcons/share_%s.svg', $this->_getTheme());
 
         return true;
     }
 
     /**
      * creates contact Person
+     * @return bool
      */
-    private function _createContactPerson()
+    private function _assignTempVarsContactPerson(): bool
     {
         $checkContactPerson = $this->Database->prepare("SELECT contactperson FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
         $this->Template->checkContactPerson = $checkContactPerson->contactperson;
 
 
         if (!$checkContactPerson->contactperson) {
-            return;
+            return false;
         }
 
         $backendMember = $this->Database->prepare("SELECT * FROM tl_member WHERE contactpages IS NOT NULL")->execute();
@@ -156,7 +150,9 @@ class SocialMediaBarModule extends \Module
             $this->Template->contactIcon = $contacticon;
         }
 
-        $this->Template->contactIcon = 'bundles/socialmediabar/smBarIcons/contact_' . $this->_getTheme() . '.svg';
+        $this->Template->contactIcon = sprintf('bundles/socialmediabar/smBarIcons/contact_%s.svg', $this->_getTheme());
+
+        return true;
     }
 
 
