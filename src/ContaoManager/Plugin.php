@@ -14,6 +14,7 @@ use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
+use Agentur1601com\CoreBundle\Agentur1601comCoreBundle;
 use Agentur1601com\SocialMediaBar\SocialMediaBarBundle;
 
 class Plugin implements BundlePluginInterface
@@ -25,7 +26,7 @@ class Plugin implements BundlePluginInterface
     {
         return [
             BundleConfig::create(SocialMediaBarBundle::class)
-                ->setLoadAfter([ContaoCoreBundle::class]),
+                ->setLoadAfter([Agentur1601comCoreBundle::class]),
         ];
     }
 }
