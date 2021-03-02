@@ -8,7 +8,7 @@ $GLOBALS['TL_LANG']['tl_smbar_configuration']['smtypeselect'] = ['Soziales Mediu
 $GLOBALS['TL_LANG']['tl_smbar_configuration']['smURL'] = ['Social Media Link', 'Hier kann der Social Media Link zur entsprechenden Social Media Seite hinterlegt werden.'];
 $GLOBALS['TL_LANG']['tl_smbar_configuration']['mscsmtype'] = ['Name des Sozialen Mediums', 'Hier kann der Name eines nicht vordefineriten Sozialen Mediums vergeben werden.'];
 $GLOBALS['TL_LANG']['tl_smbar_configuration']['smtarget'] = ['Link in neuem Tab öffnen', 'Auswahl ob der Social Media Link in einem neun Tab geöffnet werden soll. Standardmäßig ist die checkbox angehakt und der Link öffent in einem neuen Tab.'];
-$GLOBALS['TL_LANG']['tl_smbar_configuration']['smshare'] = ['Share Popup aktivieren', 'Hier kann für facebook und twitter ein extra share Link aktiviert werden, welcher ein Popup öffnet.'];
+$GLOBALS['TL_LANG']['tl_smbar_configuration']['smshare'] = ['Teilen Link aktivieren', 'Hier kann für facebook und twitter ein extra teilen Link aktiviert werden. Über die smBar Einstellugngen kann hierfür auch ein Pop-Up Script geladen werden.'];
 $GLOBALS['TL_LANG']['tl_smbar_configuration']['smshareicon'] = ['Share Icon aktivieren', 'Hier kann statt dem Text "Webseite Teilen" ein share Icon ausgegeben werden.'];
 
 $GLOBALS['TL_LANG']['tl_smbar_configuration']['icon_legend'] = 'Social Media Bar Icon';

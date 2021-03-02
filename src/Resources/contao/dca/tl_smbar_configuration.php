@@ -62,13 +62,14 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = [
 
     // Palettes
     'palettes' => [
-        '__selector__' => ['smtypeselect'],
+        '__selector__' => ['smtypeselect', 'smshare'],
         'default' => '{title_legend},smtypeselect,smurl,smtarget;{icon_legend:hide},smcustomicon;{sm_visibility:hide},invisible;'
     ],
     'subpalettes' => [
         'smtypeselect_Sonstige' => 'mscsmtype',
-        'smtypeselect_facebook' => 'smshare,smshareicon',
-        'smtypeselect_twitter' => 'smshare,smshareicon'
+        'smtypeselect_facebook' => 'smshare',
+        'smtypeselect_twitter' => 'smshare',
+        'smshare' => 'smshareicon'
 
     ],
 
@@ -93,7 +94,6 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = [
             'exclude' => true,
             'inputType' => 'select',
             'options' => ['facebook', 'twitter', 'instagram', 'youtube', 'linkedin', 'xing', 'pinterest', 'googlemaps', 'Sonstige'],
-            //'foreignKey'              => 'tl_user.name',
             'eval' => ['submitOnChange' => true, 'mandatory' => true, 'includeBlankOption' => true, 'tl_class' => ''],
             'sql' => "varchar(255) NOT NULL default ''"
         ],
@@ -131,7 +131,7 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = [
             'exclude' => true,
             'inputType' => 'checkbox',
             'default' => 1,
-            'eval' => ['tl_class' => 'w50 m12'],
+            'eval' => ['submitOnChange' => true, 'tl_class' => 'w50 m12'],
             'sql' => "char(1) NOT NULL default ''"
         ],
         'smshareicon' => [

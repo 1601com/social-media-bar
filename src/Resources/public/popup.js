@@ -1,6 +1,5 @@
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function () {
     // Facebook und Twitter Popup
-
     var popUpElem = document.querySelectorAll('.sharePopup');
 
     for (var i = 0; i < popUpElem.length; i++) {
@@ -28,4 +27,4 @@ document.addEventListener("DOMContentLoaded", function () {
             if (mypopup) mypopup.focus();
         }
     }
-});
+};

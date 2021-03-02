@@ -11,6 +11,8 @@ $GLOBALS['TL_LANG']['tl_smbar']['contactcustomicon'] = ['Custom Kontakt Icon', '
 
 
 $GLOBALS['TL_LANG']['tl_smbar']['theme_legend'] = 'Theme Einstellungen';
+$GLOBALS['TL_LANG']['tl_smbar']['usecss'] = ['CSS verwenden', 'Hier kann ausgewählt werden, ob die mitgelieferten CSS Dateien aus der Erweiterung geladen werden sollen.'];
 $GLOBALS['TL_LANG']['tl_smbar']['themeselect'] = ['Themeauswahl', 'Hier kann ein Theme für die Social Media Bar ausgewählt werden. Als default Theme wird hier "light" verwendet.'];
+$GLOBALS['TL_LANG']['tl_smbar']['usejs'] = ['Javascript verwenden', 'Hier kann ausgewählt werden, ob die mitgelieferten Javascript Datei geladen werden sollen, wodurch alle share Links in einem separaten Fenster geöffnet werden. '];
 
 

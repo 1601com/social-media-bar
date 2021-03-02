@@ -36,8 +36,8 @@ class SocialMediaBarModule extends \Module
      */
     protected function compile()
     {
-        // selected Theme
-        $this->Template->selectedTheme = $this->_getTheme();
+        // selected Theme & pop-up
+        $this->_getLoadingFiles();
 
         // social media elements
         if (!$this->_assignTempVarsSMElement()) {
@@ -48,6 +48,28 @@ class SocialMediaBarModule extends \Module
 
         // contact person
         $this->_assignTempVarsContactPerson();
+    }
+
+    /**
+     * get social media bar theme
+     * @return bool
+     */
+    private function _getLoadingFiles(): bool
+    {
+        $checkUseCSS = $this->Database->prepare("SELECT usecss FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
+        $checkUseJS = $this->Database->prepare("SELECT usejs FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
+
+        if ($checkUseCSS->usecss) {
+            $GLOBALS['TL_HEAD'][] = \Contao\Template::generateStyleTag('bundles/socialmediabar/socialmediabar.css', null, null);
+
+            $this->Template->selectedTheme = $this->_getTheme();
+        }
+
+        if ($checkUseJS->usejs) {
+            $GLOBALS['TL_BODY'][] = \Contao\Template::generateScriptTag('bundles/socialmediabar/popup.js', true, null);
+        }
+
+        return true;
     }
 
     /**

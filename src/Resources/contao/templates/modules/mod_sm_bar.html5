@@ -32,7 +32,7 @@ $smShareLinks = [
                     </a>
                     <?php if ($this->smElements[$element]["smShare"] == true): ?>
                         <a class="share sharePopup" href="<?= $smShareLinks[$this->smElements[$element]["smType"]] ?>"
-                           rel="noopener nofollow external" title="Webseite auf Ihrer Pinnwand posten" target="_blank">
+                           rel="noopener nofollow external" title="Webseite auf Ihrer Pinnwand posten" <?php if ($this->smElements[$element]["smTarget"] == true) echo 'target="_blank" '; ?>>
                             <?php if ($this->smElements[$element]["smShareIcon"] == true): ?>
                                 <img src="<?= $this->shareIcon ?>" alt="social media share icon">
                             <?php else: ?>

@@ -68,7 +68,11 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
 
     // Palettes
     'palettes' => [
-        'default' => 'title;{theme_legend:hide},themeselect;{contact_legend},contactperson,contactcustomicon'
+        '__selector__' => ['usecss'],
+        'default' => 'title;{theme_legend:hide},usecss,usejs;{contact_legend},contactperson,contactcustomicon'
+    ],
+    'subpalettes' => [
+        'usecss' => 'themeselect'
     ],
 
     // Fields
@@ -100,6 +104,22 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
             'inputType' => 'fileTree',
             'eval' => ['fieldType' => 'radio', 'files' => true, 'filesOnly' => true, 'tl_class' => 'w50', 'extensions' => 'svg,png'],
             'sql' => "binary(16) NULL"
+        ],
+        'usecss' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_smbar']['usecss'],
+            'exclude' => true,
+            'inputType' => 'checkbox',
+            'default' => 1,
+            'eval' => ['submitOnChange' => true,    'tl_class' => 'm12'],
+            'sql' => "char(1) NOT NULL default ''"
+        ],
+        'usejs' => [
+            'label' => &$GLOBALS['TL_LANG']['tl_smbar']['usejs'],
+            'exclude' => true,
+            'inputType' => 'checkbox',
+            'default' => 1,
+            'eval' => ['tl_class' => 'm12'],
+            'sql' => "char(1) NOT NULL default ''"
         ],
         'themeselect' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar']['themeselect'],
