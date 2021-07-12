@@ -51,15 +51,14 @@ class SocialMediaBarModule extends \Module
     }
 
     /**
-     * get social media bar theme
+     * load asset files
      * @return bool
      */
     private function _getLoadingFiles(): bool
     {
-        $checkUseCSS = $this->Database->prepare("SELECT usecss FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
         $checkUseJS = $this->Database->prepare("SELECT usejs FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
 
-        if ($checkUseCSS->usecss) {
+        if ($this->_checkThemeInUse()) {
             $GLOBALS['TL_HEAD'][] = \Contao\Template::generateStyleTag('bundles/socialmediabar/socialmediabar.css', null, null);
 
             $this->Template->selectedTheme = $this->_getTheme();
@@ -70,6 +69,21 @@ class SocialMediaBarModule extends \Module
         }
 
         return true;
+    }
+
+    /**
+     * check social media bar theme
+     * @return bool
+     */
+    private function _checkThemeInUse(): bool
+    {
+        $checkUseTheme = $this->Database->prepare("SELECT usecss FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
+
+        if ($checkUseTheme->usecss) {
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -127,7 +141,11 @@ class SocialMediaBarModule extends \Module
 
         $this->Template->smElements = $elemSM;
         $this->Template->iconPath = 'bundles/socialmediabar/smBarIcons/';
-        $this->Template->shareIcon = sprintf('bundles/socialmediabar/smBarIcons/share_%s.svg', $this->_getTheme());
+        $this->Template->shareIcon = 'bundles/socialmediabar/smBarIcons/default/share.svg';
+
+        if ($this->_checkThemeInUse()) {
+            $this->Template->shareIcon = sprintf('bundles/socialmediabar/smBarIcons/'.$this->_getTheme().'/share_%s.svg', $this->_getTheme());
+        }
 
         return true;
     }
@@ -165,14 +183,18 @@ class SocialMediaBarModule extends \Module
         $this->Template->contactPerson = $memberInformation;
 
 
+        $this->Template->contactIcon = 'bundles/socialmediabar/smBarIcons/default/contact.svg';
+
+        if ($this->_checkThemeInUse()) {
+            $this->Template->contactIcon = sprintf('bundles/socialmediabar/smBarIcons/'.$this->_getTheme().'/contact_%s.svg', $this->_getTheme());
+        }
+
         $checkContactIcon = $this->Database->prepare("SELECT * FROM tl_smbar WHERE id=?")->execute($this->sm_bar);
 
         if ($checkContactIcon->contactcustomicon) {
-            $contacticon = $this->_addImage($checkContactIcon, $checkContactIcon->contactcustomicon);
-            $this->Template->contactIcon = $contacticon;
+            $customContactIcon = $this->_addImage($checkContactIcon, $checkContactIcon->contactcustomicon);
+            $this->Template->contactIcon = $customContactIcon;
         }
-
-        $this->Template->contactIcon = sprintf('bundles/socialmediabar/smBarIcons/contact_%s.svg', $this->_getTheme());
 
         return true;
     }

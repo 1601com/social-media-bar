@@ -20,8 +20,10 @@ $smShareLinks = [
                 <div class="smIcon">
                     <?php if ($this->smElements[$element]["smCustomIcon"] == true): ?>
                         <img src="<?= $this->smElements[$element]["smCustomIcon"] ?>" alt="custom social media icon">
-                    <?php elseif (sprintf($this->iconPath."%s_%s.svg", $this->smElements[$element]["smType"], $this->selectedTheme) == true): ?>
-                        <img src="<?= sprintf($this->iconPath."%s_%s.svg", $this->smElements[$element]["smType"], $this->selectedTheme) ?>" alt="social media icon">
+                    <?php elseif ($this->selectedTheme && sprintf($this->iconPath.$this->selectedTheme."/%s_%s.svg", $this->smElements[$element]["smType"], $this->selectedTheme) == true): ?>
+                        <img src="<?= sprintf($this->iconPath.$this->selectedTheme."/%s_%s.svg", $this->smElements[$element]["smType"], $this->selectedTheme) ?>" alt="social media icon">
+                    <?php else: ?>
+                        <img src="<?= $this->iconPath."default/".$this->smElements[$element]["smType"].".svg" ?>" alt="social media icon">
                     <?php endif; ?>
                 </div>
                 <div class="smLinks">
