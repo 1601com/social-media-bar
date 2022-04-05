@@ -13,7 +13,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sm_template'] = [
     'inputType' => 'select',
     'options_callback' => ['tl_fe_module', 'getSmTemplates'],
     'eval' => ['includeBlankOption' => true, 'tl_class' => 'w50'],
-    'sql' => "varchar(255) NOT NULL default ''"
+    'sql' => ['type' => 'string', 'length' => 255, 'notnull' => true, 'default' => ''],
 ];
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sm_bar'] = [
@@ -22,7 +22,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sm_bar'] = [
     'inputType' => 'select',
     'options_callback' => ['tl_fe_module', 'getSmBar'],
     'eval' => ['mandatory' => true, 'includeBlankOption' => true, 'tl_class' => 'w50'],
-    'sql' => "varchar(255) NOT NULL default ''"
+    'sql' => ['type' => 'string', 'length' => 255, 'notnull' => true, 'default' => ''],
 ];
 
 
