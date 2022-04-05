@@ -26,7 +26,7 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactdescription'] = [
     'search' => true,
     'inputType' => 'textarea',
     'eval' => ['rte' => 'tinyMCE', 'tl_class' => 'clr'],
-    'sql' => ['type' => 'text', 'length' => MySqlPlatform::LENGTH_LIMIT_TEXT, 'notnull' => true, 'default' => '']
+    'sql' => ['type' => 'text', 'length' => MySqlPlatform::LENGTH_LIMIT_TEXT, 'notnull' => false]
 ];
 
 
