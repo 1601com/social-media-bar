@@ -76,18 +76,18 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = [
     // Fields
     'fields' => [
         'id' => [
-            'sql' => "int(10) unsigned NOT NULL auto_increment"
+            'sql' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'notnull' => true, 'autoincrement' => true],
         ],
         'pid' => [
             'foreignKey' => 'tl_smbar.title',
-            'sql' => "int(10) unsigned NOT NULL default 0",
-            'relation' => ['type' => 'belongsTo', 'load' => 'lazy']
+            'relation' => ['type' => 'belongsTo', 'load' => 'lazy'],
+            'sql' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'notnull' => true, 'default' => 0],
         ],
         'tstamp' => [
-            'sql' => "int(10) unsigned NOT NULL default '0'"
+            'sql' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'notnull' => true, 'default' => 0],
         ],
         'sorting' => [
-            'sql' => "int(10) unsigned NOT NULL default '0'"
+            'sql' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'notnull' => true, 'default' => 0],
         ],
         'smtypeselect' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['smtypeselect'],
@@ -95,28 +95,28 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = [
             'inputType' => 'select',
             'options' => ['facebook', 'twitter', 'instagram', 'youtube', 'linkedin', 'xing', 'pinterest', 'googlemaps', 'Sonstige'],
             'eval' => ['submitOnChange' => true, 'mandatory' => true, 'includeBlankOption' => true, 'tl_class' => ''],
-            'sql' => "varchar(255) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 255, 'notnull' => true, 'default' => ''],
         ],
         'smurl' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['smURL'],
             'exclude' => true,
             'inputType' => 'text',
             'eval' => ['mandatory' => true, 'dcaPicker' => true, 'rgxp' => 'url', 'decodeEntities' => true, 'maxlength' => 255],
-            'sql' => "varchar(255) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 255, 'notnull' => true, 'default' => ''],
         ],
         'mscsmtype' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['mscsmtype'],
             'inputType' => 'text',
             'search' => true,
             'eval' => ['mandatory' => true, 'maxlength' => 64, 'tl_class' => ''],
-            'sql' => "varchar(255) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 255, 'notnull' => true, 'default' => ''],
         ],
         'smcustomicon' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['smcustomicon'],
             'exclude' => true,
             'inputType' => 'fileTree',
             'eval' => ['fieldType' => 'radio', 'files' => true, 'filesOnly' => true, 'tl_class' => 'clr', 'extensions' => 'svg,png'],
-            'sql' => "binary(16) NULL"
+            'sql' => ['type' => 'binary', 'length' => 16, 'fixed' => true, 'notnull' => false]
         ],
         'smtarget' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['smtarget'],
@@ -124,7 +124,7 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = [
             'inputType' => 'checkbox',
             'default' => 1,
             'eval' => ['tl_class' => 'w50 m12'],
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 1, 'fixed' => true, 'notnull' => true, 'default' => ''],
         ],
         'smshare' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['smshare'],
@@ -132,7 +132,7 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = [
             'inputType' => 'checkbox',
             'default' => 1,
             'eval' => ['submitOnChange' => true, 'tl_class' => 'w50 m12'],
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 1, 'fixed' => true,  'notnull' => true, 'default' => ''],
         ],
         'smshareicon' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['smshareicon'],
@@ -140,14 +140,14 @@ $GLOBALS['TL_DCA']['tl_smbar_configuration'] = [
             'inputType' => 'checkbox',
             'default' => 1,
             'eval' => ['tl_class' => 'w50 m12'],
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 1, 'fixed' => true,  'notnull' => true, 'default' => ''],
         ],
         'invisible' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar_configuration']['invisible'],
             'exclude' => true,
             'filter' => true,
             'inputType' => 'checkbox',
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 1, 'fixed' => true,  'notnull' => true, 'default' => ''],
         ]
     ]
 ];

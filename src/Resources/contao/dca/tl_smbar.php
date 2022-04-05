@@ -78,17 +78,17 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
     // Fields
     'fields' => [
         'id' => [
-            'sql' => "int(10) unsigned NOT NULL auto_increment"
+            'sql' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'notnull' => true, 'autoincrement' => true],
         ],
         'tstamp' => [
-            'sql' => "int(10) unsigned NOT NULL default '0'"
+            'sql' => ['type' => 'integer', 'length' => 10, 'unsigned' => true, 'notnull' => true, 'default' => 0],
         ],
         'title' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar']['title'],
             'inputType' => 'text',
             'search' => true,
             'eval' => ['mandatory' => true, 'maxlength' => 64],
-            'sql' => "varchar(255) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 255, 'notnull' => true, 'default' => ''],
         ],
         'contactperson' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar']['contactperson'],
@@ -96,14 +96,14 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
             'inputType' => 'checkbox',
             'default' => 1,
             'eval' => ['tl_class' => 'w50 m12'],
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 1, 'fixed' => true, 'notnull' => true, 'default' => ''],
         ],
         'contactcustomicon' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar']['contactcustomicon'],
             'exclude' => true,
             'inputType' => 'fileTree',
             'eval' => ['fieldType' => 'radio', 'files' => true, 'filesOnly' => true, 'tl_class' => 'w50', 'extensions' => 'svg,png'],
-            'sql' => "binary(16) NULL"
+            'sql' => ['type' => 'binary', 'length' => 16, 'fixed' => true, 'notnull' => false]
         ],
         'usecss' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar']['usecss'],
@@ -111,7 +111,7 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
             'inputType' => 'checkbox',
             'default' => 1,
             'eval' => ['submitOnChange' => true,    'tl_class' => 'm12'],
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 1, 'fixed' => true, 'notnull' => true, 'default' => ''],
         ],
         'usejs' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar']['usejs'],
@@ -119,7 +119,7 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
             'inputType' => 'checkbox',
             'default' => 1,
             'eval' => ['tl_class' => 'm12'],
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 1, 'fixed' => true, 'notnull' => true, 'default' => ''],
         ],
         'themeselect' => [
             'label' => &$GLOBALS['TL_LANG']['tl_smbar']['themeselect'],
@@ -128,7 +128,7 @@ $GLOBALS['TL_DCA']['tl_smbar'] = [
             'options' => ['light', 'dark'],
             'default' => 'light',
             'eval' => ['tl_class' => 'w50'],
-            'sql' => "varchar(255) NOT NULL default ''"
+            'sql' => ['type' => 'string', 'length' => 255, 'notnull' => true, 'default' => ''],
         ],
     ]
 ];

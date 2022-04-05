@@ -1,6 +1,7 @@
 <?php
 
 use Contao\CoreBundle\DataContainer\PaletteManipulator;
+use Doctrine\DBAL\Platforms\MySqlPlatform;
 
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['contactpages'] = [
@@ -8,7 +9,7 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactpages'] = [
     'exclude' => true,
     'inputType' => 'pageTree',
     'eval' => ['fieldType' => 'checkbox', 'tl_class' => 'w50', 'multiple' => true],
-    'sql' => 'blob NULL'
+    'sql' => ['type' => 'blob', 'length' => MySqlPlatform::LENGTH_LIMIT_BLOB, 'notnull' => false]
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['contactimage'] = [
@@ -16,7 +17,7 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactimage'] = [
     'exclude' => true,
     'inputType' => 'fileTree',
     'eval' => ['fieldType' => 'radio', 'files' => true, 'filesOnly' => true, 'tl_class' => 'w50', 'extensions' => \Contao\Config::get('validImageTypes')],
-    'sql' => "binary(16) NULL"
+    'sql' => ['type' => 'binary', 'length' => 16, 'fixed' => true, 'notnull' => false]
 ];
 
 $GLOBALS['TL_DCA']['tl_member']['fields']['contactdescription'] = [
@@ -25,7 +26,7 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactdescription'] = [
     'search' => true,
     'inputType' => 'textarea',
     'eval' => ['rte' => 'tinyMCE', 'tl_class' => 'clr'],
-    'sql' => 'text NOT NULL'
+    'sql' => ['type' => 'text', 'length' => MySqlPlatform::LENGTH_LIMIT_TEXT, 'notnull' => true, 'default' => '']
 ];
 
 
