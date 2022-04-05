@@ -17,7 +17,6 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactimage'] = [
     'exclude' => true,
     'inputType' => 'fileTree',
     'eval' => ['fieldType' => 'radio', 'files' => true, 'filesOnly' => true, 'tl_class' => 'w50', 'extensions' => \Contao\Config::get('validImageTypes')],
-    'sql' => "binary(16) NULL",
     'sql' => ['type' => 'binary', 'length' => 16, 'fixed' => true, 'notnull' => false]
 ];
 
@@ -27,7 +26,7 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['contactdescription'] = [
     'search' => true,
     'inputType' => 'textarea',
     'eval' => ['rte' => 'tinyMCE', 'tl_class' => 'clr'],
-    'sql' => ['type' => 'text', 'length' => MySqlPlatform::LENGTH_LIMIT_TEXT, 'notnull' => true]
+    'sql' => ['type' => 'text', 'length' => MySqlPlatform::LENGTH_LIMIT_TEXT, 'notnull' => true, 'default' => '']
 ];
 
 
